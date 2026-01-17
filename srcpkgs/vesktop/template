@@ -25,7 +25,7 @@ do_build() {
 do_install() {
 	cd "${wrksrc}"
 	vmkdir usr/lib/${pkgname}
-	vcopy "dist/linux-unpacked/*" "usr/lib/${pkgname}"
+	cp -R dist/linux-unpacked/. ${DESTDIR}/usr/lib/${pkgname}
 	vinstall ${FILESDIR}/vesktop.desktop 644 usr/share/applications vesktop.desktop
 	vinstall build/icon.svg 644 usr/share/icons/hicolor/scalable/apps ${pkgname}.svg
 	vlicense LICENSE
