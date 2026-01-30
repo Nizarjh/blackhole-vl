@@ -11,7 +11,7 @@ license="GPL-3.0-only"
 homepage="https://github.com/Vencord/Vesktop"
 distfiles="https://github.com/Vencord/Vesktop/archive/v${version}.tar.gz"
 checksum=19f131dcfaa48df02268bbda538389c7e1ce63c80420fa617089a83253dba702
-
+nostrip=yes
 do_build() {
 	pnpm i --frozen-lockfile
 	pnpm package:dir
