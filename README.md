@@ -130,7 +130,8 @@ Currently packages are tested on / crosscompiled for the following architectures
 Contributions are **highly appreciated**.
 
 ### Contribution workflow:
-- Do **not** target `manual` directly
+- Do not target manual directly unless the resulting .xbps package is smaller than 100 MB and requires less than 8 GB of RAM to build.
+- In all other cases, the pull request must target manual.
 
 This repository follows the same general rules and guidelines as
 [void-packages CONTRIBUTING.md](https://github.com/void-linux/void-packages/blob/master/CONTRIBUTING.md).
