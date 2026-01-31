@@ -3,7 +3,6 @@ pkgname=vesktop
 version=1.6.3
 revision=1
 _electronver=35
-archs="x86_64 aarch64"
 hostmakedepends="nodejs pnpm pkg-config"
 makedepends="glib-devel"
 depends="electron${_electronver} alsa-lib"
