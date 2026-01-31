@@ -19,11 +19,9 @@ checksum=2414076b496175c60dfc6a29be84269edd4a347aec29a9aa73b176982b5280d5
 
 post_install() {
 	# data
-	vmkdir usr/lib
 	vcopy ${wrksrc}/${build_wrksrc}/executables/SimulIDE_${version}-SR0 usr/lib/simulide
 
 	# binary
-	vmkdir usr/bin
 	ln -s /usr/lib/simulide/simulide ${DESTDIR}/usr/bin
 
 	# icon
