@@ -2,19 +2,26 @@
 pkgname=vesktop
 version=1.6.3
 revision=1
+_electronver=35
 archs="x86_64 aarch64"
-hostmakedepends="nodejs pnpm"
-depends="alsa-lib gtk+3 nss"
+hostmakedepends="nodejs pnpm pkg-config"
+makedepends="glib-devel"
+depends="electron${_electronver} alsa-lib"
 short_desc="Electron-based Discord app with Vencord & improved Linux support"
 maintainer="Nizarjh <chel773@tutamail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/Vencord/Vesktop"
 distfiles="https://github.com/Vencord/Vesktop/archive/v${version}.tar.gz"
 checksum=19f131dcfaa48df02268bbda538389c7e1ce63c80420fa617089a83253dba702
-nostrip=yes
+
 do_build() {
-	pnpm i --frozen-lockfile
-	pnpm package:dir
+	# prevent pnpm from trying to write to read only system dirs
+	export PNPM_HOME="${wrksrc}/.pnpm"
+
+	pnpm install --frozen-lockfile
+	pnpm buildLibVesktop
+	pnpm build
+	pnpm package --linux dir
 }
 
 do_install() {
